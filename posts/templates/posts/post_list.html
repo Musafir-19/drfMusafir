@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список публикаций</title>
+</head>
+<body>
+    <header>
+        <h2>Список всех публикаций</h2>
+    </header>
+    <article>
+        {% for pub in posts %}
+            <h2> {{ pub.title}} </h2>
+            <p>
+                публикация {{ pub.author }} от {{ pub.when_published }}
+            </p>
+        {{ pub.body|truncatewords:10|linebreaks }}
+        {% empty %}
+            <h2> Публикаций нет </h2>
+            <p> Зайдите в админку, чтобы добавить </p>
+        {% endfor %}
+    </article>
+</body>
+</html>
